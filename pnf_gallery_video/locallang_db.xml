@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'pnf_gallery_video'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tx_dam.tx_pnfgalleryvideo.tab">Vidéo</label>
+			<label index="tx_dam.tx_pnfgalleryvideo_time">Durée</label>
+			<label index="tx_dam.tx_pnfgalleryvideo_thumbnail">Miniature</label>
+			<label index="tx_dam.tx_pnfgalleryvideo_accessibility_link">Lien d'accessibilité</label>
+		</languageKey>
+	</data>
+</T3locallang>

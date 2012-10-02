@@ -1,0 +1,10 @@
+plugin.tx_pnfgallery_pi1 {
+	themes {
+		singlevideo {
+			# cat=plugin.tx_pnfcapdemat_pi1/themes/singlevideo/file/a; type=file[html]; label=Template to use: The template file to use.
+			template = EXT:pnf_gallery_video/themes/singlevideo/res/template.html
+			# cat=plugin.tx_pnfcapdemat_pi1/themes/singlevideo/other/a; type=string; label=Theme path: Theme path.
+			path = typo3conf/ext/pnf_gallery_video/themes/singlevideo/
+		}
+	}
+}

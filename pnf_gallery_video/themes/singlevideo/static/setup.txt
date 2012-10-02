@@ -1,0 +1,45 @@
+plugin.tx_pnfgallery_pi1 {
+	themes {
+		singlevideo {
+			template = {$plugin.tx_pnfgallery_pi1.themes.singlevideo.template}
+		}
+	}
+}
+
+[userFunc = user_pnfgalleryOnCurrentPage(singlevideo)]
+plugin.tx_pnfgallery_pi1 {
+	renderFile {
+		title.wrap = <h3>|</h3>
+		tstamp {
+			noTrimWrap = |<p class="date">Publié le |</p>|
+			strftime = %d %B %Y
+		}
+		crdate < .tstamp
+		tx_pnfgalleryvideo_time.noTrimWrap = |<p class="time">Durée: |</p>|
+		tx_pnfgalleryvideo_accessibility_link {
+			setContentToCurrent = 1
+			override = > Lire la transcription textuelle de la video
+			typolink.parameter.current = 1
+			wrap = <p class="accessibility_link">|</p>
+		}
+		tx_pnfgalleryvideo_thumbnail {
+			setContentToCurrent = 1
+			cObject = IMAGE
+			cObject {
+				file {
+					import.current = 1
+					maxW = 200
+				}
+			}
+		}
+	}
+}
+page {
+	includeJSFooter {
+		singlevideo = {$plugin.tx_pnfgallery_pi1.themes.singlevideo.path}res/script.js
+	}
+	includeCSS {
+		singlevideo = {$plugin.tx_pnfgallery_pi1.themes.singlevideo.path}res/style.css
+	}
+}
+[global]

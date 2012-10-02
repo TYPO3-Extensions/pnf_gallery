@@ -1,0 +1,27 @@
+.tx-sexybookmarks-pi1 .sexybookmarks ul {
+	margin: 10px 0;
+}
+
+	.tx-sexybookmarks-pi1 .sexybookmarks ul li {
+		background: none;
+		float: left;
+		padding: 0 10px 0 0;
+		margin: 0;
+	}
+
+		.tx-sexybookmarks-pi1 .sexybookmarks ul li a {
+			display: block;
+			font-size: 1px;
+			width: 22px;
+			height: 22px;
+			cursor: pointer;
+			text-indent: -3000px;
+		}
+		
+		.tx-sexybookmarks-pi1 .sexybookmarks ul li.sexy-facebook a {
+			background: transparent url('icons/facebook.png') no-repeat top left;
+		}
+		
+		.tx-sexybookmarks-pi1 .sexybookmarks ul li.sexy-twitter a {
+			background: transparent url('icons/twitter.png') no-repeat top left;
+		}

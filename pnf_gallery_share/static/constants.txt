@@ -1,0 +1,7 @@
+plugin.tx_pnfgallery_pi1 {
+	themes {
+		singlevideo {
+			template = EXT:pnf_gallery_share/themes/singlevideo/template.html
+		}
+	}
+}
