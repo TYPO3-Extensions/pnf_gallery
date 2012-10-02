@@ -1,0 +1,98 @@
+.tx-pnfgallery-pi1 .singlevideo {
+	background: #323131;
+	padding: 30px;
+	position: relative;
+	margin: 0 0 30px;
+}
+
+	.tx-pnfgallery-pi1 .singlevideo .left {
+		float: left;
+		width: 550px;
+		text-align: center;
+	}
+	
+	.tx-pnfgallery-pi1 .singlevideo .right {
+		float: right;
+	}
+	.tx-pnfgallery-pi1 .singlevideo .right,
+	.tx-pnfgallery-pi1 .singlevideo div.bottom {
+		width: 285px;	
+	}
+	
+	.tx-pnfgallery-pi1 .singlevideo .clear {
+		clear: both;
+	}
+	
+	.tx-pnfgallery-pi1 .singlevideo p,
+	.tx-pnfgallery-pi1 .singlevideo h3 {
+		color: #FFF;
+	}
+	
+	.tx-pnfgallery-pi1 .singlevideo h3  {
+		line-height: 22px;
+	}
+	
+	.tx-pnfgallery-pi1 .singlevideo p.time,
+	.tx-pnfgallery-pi1 .singlevideo p.date {
+		color: #B4B6B8;
+		font-weight: bold;
+	}
+	
+	.tx-pnfgallery-pi1 .singlevideo p.accessibility_link,
+	.tx-pnfgallery-pi1 .singlevideo p.accessibility_link a {
+		color: #FFF;
+		font-weight: bold;
+	}
+	
+		.tx-pnfgallery-pi1 .singlevideo p.accessibility_link a {
+			text-decoration: none;
+		}
+		.tx-pnfgallery-pi1 .singlevideo p.accessibility_link a:hover {
+			text-decoration: underline;
+		}
+		
+	.tx-pnfgallery-pi1 .singlevideo div.bottom {
+		position: absolute;
+		bottom: 30px;
+	}
+	
+		.tx-pnfgallery-pi1 .singlevideo div.bottom p{
+			margin: 10px 0;
+		}
+	
+	.tx-pnfgallery-pi1 .singlevideo hr {
+		border-bottom: solid 1px #B4B6B8;
+	}
+		
+	.tx-pnfgallery-pi1 .singlevideo a.next,
+	.tx-pnfgallery-pi1 .singlevideo a.prev {
+		position: absolute;
+		top: 175px;
+		display: block;
+		font-size: 1px;
+		color: #323131;
+		text-indent: -3000px;
+		cursor: pointer;
+		height: 60px;
+		width: 48px;
+		background-image: url("/typo3conf/ext/pnf_gallery/themes/simplegallery/res/galleria-1.2.7/galleria/themes/simplegallery/simplegallery-map.png");
+		background-repeat: no-repeat;
+		opacity: .3;
+		filter: alpha(opacity=30);
+	}
+	
+	.tx-pnfgallery-pi1 .singlevideo a.next:hover,
+	.tx-pnfgallery-pi1 .singlevideo a.prev:hover {
+		opacity: 1;
+		filter: alpha(opacity=100);
+	}	
+	
+	.tx-pnfgallery-pi1 .singlevideo a.next {
+		right: -10px;
+		background-position: -284px 0;
+	}
+	
+	.tx-pnfgallery-pi1 .singlevideo a.prev {
+		left: -8px;
+		background-position: 0 0;
+	}

@@ -1,0 +1,106 @@
+plugin.tx_pnfgallery_pi1 {	
+	renderFile {
+		video = COA
+		video {
+			wrap = <video>|{field:alt}</video>
+			wrap {
+				insertData = 1
+				addParams {
+					controls = controls
+					width = 1 
+					width.field = width
+					height = 1 
+					height.field = height
+					class = pnfgallery_video
+					id = 1
+					id {
+						field = uid
+						wrap = pnfgallery_video_|
+					}
+					poster = 1
+					poster {
+						field = tx_pnfgalleryvideo_thumbnail
+						if.isTrue.field = tx_pnfgalleryvideo_thumbnail
+					}
+				}
+			}
+			1 = TEXT
+			1 {
+				field = file
+				wrap = <source src="/|">
+				wrap.addParams {
+					type = 1
+					type {
+						field = file_type
+						wrap = video/|
+						if.isTrue.field = file_type
+					}
+				}
+			}
+		}
+	}
+}
+
+[userFunc = user_pnfgalleryOnCurrentPage()]||[userFunc = user_ttcontentVideoLinkOnCurrentPage()]
+page {
+	includeJSFooter {
+		jwplayer = typo3conf/ext/pnf_gallery_video/res/player/mediaplayer-5.9/jwplayer.js
+		pnfgalleryvideo = typo3conf/ext/pnf_gallery_video/res/video.js
+	}
+}
+[global]
+
+[userFunc = user_ttcontentVideoLinkOnCurrentPage()]
+page {
+	includeCSS {
+		pnf_gallery_lightbox = typo3conf/ext/pnf_gallery/res/pnf_gallery_lightbox.css
+	}
+	includeJSFooter {
+		pnf_gallery_lightbox = typo3conf/ext/pnf_gallery/res/pnf_gallery_lightbox.js
+	}
+}
+[global]
+tt_content.image.20 {
+	1 {
+		
+		
+		stdWrap.override.cObject = IMAGE
+		stdWrap.override.cObject < tt_content.image.20.1
+		stdWrap.override.cObject {
+			stdWrap.override >
+			if.isTrue.cObject = TEXT
+			if.isTrue.cObject {
+				field = image_link
+				listNum < tt_content.image.20.1.imageLinkWrap.typolink.parameter.listNum
+				postUserFunc = tx_pnfgalleryvideo_userfunc->isVideoFile
+			}
+			imageLinkWrap {
+				typolink {
+					ATagParams = rel="pnf_gallery_video_link"
+				}
+			}
+			file >
+			file = GIFBUILDER
+			file {
+				XY = [10.w], [10.h]
+				format = jpg
+				quality = 100
+				10 = IMAGE 
+				10 {           
+					file {
+						import.current = 1
+						width.field = imagewidth
+					}
+				}
+				20 = IMAGE 
+				20 {
+					# 60 * 57
+					file = typo3conf/ext/pnf_gallery_video/res/picto_video.png
+					# 300 /2 - 30
+					# 200 / 2 - 30
+					offset = [10.w] /2 - 30,[10.h] / 2 - 30
+				} 
+			}
+		}
+	}
+}
