@@ -1,0 +1,41 @@
+plugin.tx_pnfgallery_pi1 {	
+	renderFile {
+		tx_pnfgalleryshare_tools < plugin.tx_sexybookmarks_pi1
+		tx_pnfgalleryshare_tools {
+			language = fr
+			bookmarks = facebook, twitter
+			jQueryNoConflict = 1
+			jQueryLibrary >
+			jsFile >
+			diasporaServer >
+			jQueryEasing >
+			templateFileJS >
+			bookmarkConf {
+				facebook {
+					20 {
+						wrap = <a href="|" target="_blank" class="external" title="Facebook">
+						20.10 >
+						20.10 = TEXT
+						20.10 {
+							typolink {
+								parameter.data = tsfe:id
+								returnLast = url
+								forceAbsoluteUrl = 1
+								# additionalParams = 
+								# additionalParams.wrap = &tx_pnfgallery_pi1[index]=
+							}
+						}
+					}
+				}
+				twitter {
+					20.wrap = <a href="|" target="_blank" class="external" title="Twitter">
+				}
+			}
+		}
+	}
+}
+page {
+	includeCSS {
+		tx_pnfgalleryshare_tools = typo3conf/ext/pnf_gallery_share/res/style.css
+	}
+}
