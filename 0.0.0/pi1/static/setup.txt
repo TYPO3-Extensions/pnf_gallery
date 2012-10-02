@@ -1,0 +1,35 @@
+plugin.tx_pnfgallery_pi1 {
+	
+	renderFile {
+		title.wrap = 
+		tstamp.strftime = %d/%m/%Y
+		crdate.strftime = %d/%m/%Y
+		description {
+			parseFunc =< lib.parseFunc_RTE
+		}
+		
+		image = IMAGE
+		image {
+			file {
+				import.field = file
+				maxW.field = width
+				maxH.field = height
+			}
+			altText.field = alt
+			titleText.field = description
+			longdescURL.field = description
+			imageLinkWrap = 1
+			imageLinkWrap {
+				enable = 1
+				bodyTag < tt_content.image.20.1.imageLinkWrap.bodyTag
+				wrap = <A href="javascript:close();"> | </A>
+				width = 800m
+				height = 600
+
+				JSwindow = 1
+				JSwindow.newWindow = 1
+				JSwindow.expand = 17,20
+			}
+		}
+	}
+}
