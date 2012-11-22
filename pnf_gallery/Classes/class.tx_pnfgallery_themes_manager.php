@@ -30,19 +30,30 @@
 
 class tx_pnfgallery_themes_manager {
 	
+	private static $tempThemes = array();
 	private static $themes;
 	
 	function subscribe($class) {
-		if ($class && class_exists($class)) {
-			$obj = t3lib_div::makeInstance($class);
-			$obj->cObj = t3lib_div::makeInstance('tslib_cObj');
-			$key = $obj->getKey();
-			self::$themes[$key] = $obj;
-		}
+		self::$tempThemes[] = $class;
 	}
 	
 	function getSubscribers() {
-		return is_array(self::$themes) ? self::$themes : array();
+		if (!is_array(self::$themes)) self::initThemes();
+		return self::$themes;
+	}
+	
+	protected function initThemes() {
+		if (is_array(self::$tempThemes)) {
+			self::$themes = array();
+			foreach (self::$tempThemes as $class) {
+				if ($class && class_exists($class)) {
+					$obj = t3lib_div::makeInstance($class);
+					if (TYPO3_MODE == 'FE') $obj->cObj = t3lib_div::makeInstance('tslib_cObj');
+					$key = $obj->getKey();
+					self::$themes[$key] = $obj;
+				}
+			}
+		}
 	}
 }
 

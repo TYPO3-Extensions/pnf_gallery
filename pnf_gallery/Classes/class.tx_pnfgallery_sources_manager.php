@@ -29,20 +29,30 @@
 
 
 class tx_pnfgallery_sources_manager {
-	
-	private static $sources;
+	private static $tempSources = array();
+	private static $sources = null;
 	
 	function subscribe($class) {
-		if ($class && class_exists($class)) {
-			$obj = t3lib_div::makeInstance($class);
-			$obj->cObj = t3lib_div::makeInstance('tslib_cObj');
-			$key = $obj->getKey();
-			self::$sources[$key] = $obj;
-		}
+		self::$tempSources[] = $class;
 	}
 	
 	function getSubscribers() {
-		return is_array(self::$sources) ? self::$sources : array();
+		if (!is_array(self::$sources)) self::initSources();
+		return self::$sources;
+	}
+	
+	protected function initSources() {
+		if (is_array(self::$tempSources)) {
+			self::$sources = array();
+			foreach (self::$tempSources as $class) {
+				if ($class && class_exists($class)) {
+					$obj = t3lib_div::makeInstance($class);
+					if (TYPO3_MODE == 'FE') $obj->cObj = t3lib_div::makeInstance('tslib_cObj');
+					$key = $obj->getKey();
+					self::$sources[$key] = $obj;
+				}
+			}
+		}
 	}
 }
 
