@@ -1,0 +1,10 @@
+plugin.tx_pnfgallery_pi1 {
+	themes {
+		mobilegallery {
+			# cat=plugin.tx_pnf_gallery_pi1/themes/mobilegallery/file/a; type=string; label=Template to use: The template file to use.
+			template = EXT:pnf_gallery/themes/mobilegallery/res/template.html
+			# cat=plugin.tx_pnf_gallery_pi1/themes/mobilegallery/other/a; type=string; label=Theme path: Theme path.
+			path = EXT:pnf_gallery/themes/mobilegallery/
+		}
+	}
+}

@@ -16,5 +16,6 @@ return array(
 	'tx_pnfgallery_theme' => $extensionClassesPath . 'interface.tx_pnfgallery_theme.php',
 	'tx_pnfgallery_themes_manager' => $extensionClassesPath . 'class.tx_pnfgallery_themes_manager.php',
 	'tx_pnfgallery_widget' => $extensionPath . 'themes/widget/class.tx_pnfgallery_widget.php',
+	'tx_pnfgallery_mobilegallery' => $extensionPath . 'themes/mobilegallery/class.tx_pnfgallery_mobilegallery.php',
 );
 ?>
