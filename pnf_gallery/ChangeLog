@@ -1,3 +1,6 @@
+2013-02-22 Guillaume Germain <guillaume.germain@plan-net.fr>
+	* Bug Fix: Added empty item in plugin source field to allow form reloading when selecting a valid value 
+
 2012-10-02 Emilie SAGNIEZ  <emilie@in-cite.net>
 	* First version stable
 	* Initial import

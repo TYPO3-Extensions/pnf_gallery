@@ -49,6 +49,8 @@
 			$row = $config['row'];
 			if ($row) {
 				$flexData = (!empty($row['pi_flexform'])) ? (t3lib_div::xml2array($row['pi_flexform'])) : (array('data' => array()));
+				if(empty($config['row']['pi_flexform']))
+					$items[] = array('' , '');
 				foreach ($sources as $key => $obj) {
 					$result = $obj->flexform_addSource($config, $flexData);
 					if (is_array($result) && !empty($result)) {
