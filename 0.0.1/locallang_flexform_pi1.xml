@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>flexform</type>
+		<description>Language labels for plugin flexform &quot;tx_pnfgallery_pi1&quot;</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="general">Configuration</label>
+			<label index="design">Graphisme</label>
+			<label index="sources">Sources</label>
+			<label index="width">Largeur de la galerie</label>
+			<label index="height">Hauteur de la galerie</label>
+			<label index="mode">Mode</label>
+			<label index="mode.dam.directory">Répertoire d'images</label>
+			<label index="mode.dam.records">Choix d'images (DAM)</label>
+			<label index="dam_directory">Répertoire</label>
+			<label index="dam_records">Images</label>
+			<label index="theme">Thème graphique</label>
+		</languageKey>
+	</data>
+	<orig_hash type="array">
+	</orig_hash>
+	<orig_text type="array">
+	</orig_text>
+</T3locallang>

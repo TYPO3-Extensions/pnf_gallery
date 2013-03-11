@@ -1,0 +1,76 @@
+<thumbnail>
+	<TCEforms>
+		<displayCond>FIELD:theme:IN:SIMPLEGALERY</displayCond>
+		<onChange>reload</onChange>
+		<label>LLL:EXT:pnf_gallery/themes/simplegallery/locallang_flexform.xml:thumbnail</label>	
+		<config>
+			 <type>check</type>
+			<default>1</default>
+		</config>
+	</TCEforms>
+</thumbnail>
+<thumbnailwidth>
+	<TCEforms>
+		<displayCond>FIELD:thumbnail:=:1</displayCond>
+		<label>LLL:EXT:pnf_gallery/themes/simplegallery/locallang_flexform.xml:thumbnailwidth</label>
+		<config>
+			<type>input</type>
+			<size>3</size>
+			<default></default>
+		</config>
+	</TCEforms>
+</thumbnailwidth>
+<thumbnailheight>
+	<TCEforms>
+		<displayCond>FIELD:thumbnail:=:1</displayCond>
+		<label>LLL:EXT:pnf_gallery/themes/simplegallery/locallang_flexform.xml:thumbnailheight</label>
+		<config>
+			<type>input</type>
+			<size>3</size>
+			<default></default>
+		</config>
+	</TCEforms>
+</thumbnailheight>
+<thumbnailcrop>
+	<TCEforms>
+		<displayCond>FIELD:thumbnail:=:1</displayCond>
+		<label>LLL:EXT:pnf_gallery/themes/simplegallery/locallang_flexform.xml:thumbnailcrop</label>	
+		<config>
+			 <type>check</type>
+			<default>0</default>
+		</config>
+	</TCEforms>
+</thumbnailcrop>
+<lightbox>
+	<TCEforms>
+		<displayCond>FIELD:theme:IN:SIMPLEGALERY</displayCond>
+		<onChange>reload</onChange>
+		<label>LLL:EXT:pnf_gallery/themes/simplegallery/locallang_flexform.xml:lightbox</label>	
+		<config>
+			 <type>check</type>
+			<default>1</default>
+		</config>
+	</TCEforms>
+</lightbox>
+<lightboxwidth>
+	<TCEforms>
+		<displayCond>FIELD:lightbox:=:1</displayCond>
+		<label>LLL:EXT:pnf_gallery/themes/simplegallery/locallang_flexform.xml:lightboxwidth</label>
+		<config>
+			<type>input</type>
+			<size>3</size>
+			<default></default>
+		</config>
+	</TCEforms>
+</lightboxwidth>
+<lightboxheight>
+	<TCEforms>
+		<displayCond>FIELD:lightbox:=:1</displayCond>
+		<label>LLL:EXT:pnf_gallery/themes/simplegallery/locallang_flexform.xml:lightboxheight</label>
+		<config>
+			<type>input</type>
+			<size>3</size>
+			<default></default>
+		</config>
+	</TCEforms>
+</lightboxheight>
