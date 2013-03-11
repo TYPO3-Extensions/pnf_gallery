@@ -1,3 +1,6 @@
+2013-03-11 Emilie SAGNIEZ  <emilie.sagniez@plan-net.fr>
+	* Version changed to 0.0.1
+
 2013-02-22 Guillaume Germain <guillaume.germain@plan-net.fr>
 	* Fix: Usage of PHP short open tags.
 
