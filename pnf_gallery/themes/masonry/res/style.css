@@ -1,0 +1,51 @@
+.tx-pnfgallery-pi1 .masonry {
+	
+}
+
+.tx-pnfgallery-pi1 .masonry .item {
+	margin: 0 1px 1px;
+	padding: 0;
+	float: left;
+	position: relative;
+}
+	.tx-pnfgallery-pi1 .masonry .item img {
+		display: block;
+	}
+	
+	.tx-pnfgallery-pi1 .masonry .item p.legend {
+		position: absolute;
+		z-index:10;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		padding: 15px 0;
+		color: #FFF;
+		background: #E52B38;
+	}
+		.tx-pnfgallery-pi1 .masonry .item p.legend .int{
+			padding: 0 15px;
+		}
+
+/* Lightbox */
+
+	.tx-pnfgallery-pi1-masonry .pnf-gallery-lightbox-overlay {
+		position: absolute;
+	}
+	.tx-pnfgallery-pi1-masonry .pnf-gallery-lightbox-shadow {
+		display: none;
+	}
+	.tx-pnfgallery-pi1-masonry .pnf-gallery-lightbox-content {
+		left: 0;
+		top: 0;
+		bottom: 0;
+		right: 0;
+	}
+	.tx-pnfgallery-pi1-masonry .pnf-gallery-lightbox-box {
+		position: absolute;
+		top: 0;
+		left: 0;
+		margin:0 !important;
+		width: 100% !important;
+		/*height: 100% !important;*/
+		text-align: center;
+	}
