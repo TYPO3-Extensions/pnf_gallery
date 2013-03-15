@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Template pnf_gallery theme simplegallery</title>
+</head>
+<body>
+
+<h2>Template</h2>
+
+<!-- ###GALLERY### begin -->
+<div class="simplegallery" id="simplegallery###CEID###">
+	<ul><!-- ###FILES### begin -->
+		<li>###FILE###</li><!-- ###FILES### end -->
+	</ul>
+</div>
+<script type="text/javascript">
+	/*<![CDATA[*/
+	jQuery(document).ready(function() {	
+		Galleria.run('#simplegallery###CEID###');
+		Galleria.configure({
+			width: ###WIDTH###,
+			height: ###HEIGHT###,
+			thumbnails: ###THUMBNAIL###,
+			lightbox: ###LIGHTBOX###
+		});
+	});
+	/*]]>*/
+</script>
+<!-- ###GALLERY### end -->

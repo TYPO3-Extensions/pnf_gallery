@@ -1,0 +1,143 @@
+plugin.tx_pnfgallery_pi1 {
+	themes {
+		masonry {
+			template = {$plugin.tx_pnfgallery_pi1.themes.masonry.template}
+		}
+	}
+}
+
+[userFunc = user_pnfgalleryOnCurrentPage(masonry)]
+page {
+	includeCSS {
+		pnf_gallery_lightbox = typo3conf/ext/pnf_gallery/res/pnf_gallery_lightbox.css
+		masonryCSS = {$plugin.tx_pnfgallery_pi1.themes.masonry.path}res/style.css
+	}
+	includeJSFooter {
+		masonry = {$plugin.tx_pnfgallery_pi1.themes.masonry.path}res/jquery.masonry.min.js
+		pnf_gallery_lightbox = typo3conf/ext/pnf_gallery/res/pnf_gallery_lightbox.js
+	}
+}
+plugin.tx_pnfgallery_pi1 {
+	renderFile {
+		image {
+			longdescURL >
+			imageLinkWrap >
+			file {
+				# Thumbs
+				maxW >
+				maxH >
+				width {
+					field = landscapewidth					
+					override {
+						# portrait
+						field = portraitwidth
+						if {
+							isGreaterThan.field = vpixels
+							value.field = hpixels
+						}
+					}
+					# innerWrap = |c
+					# innerWrap.if.isTrue {
+					# 	field = landscapecrop
+					# 	override {
+					# 		field = portraitcrop
+					# 		if {
+					# 			isGreaterThan.field = vpixels
+					# 			value.field = hpixels
+					# 		}
+					# 	}
+					# }
+					innerWrap.cObject = COA
+					innerWrap.cObject {
+					 	1 = COA
+					 	1 {
+							# portrait
+					 		if < plugin.tx_pnfgallery_pi1.renderFile.image.file.width.override.if
+							1 = TEXT
+							1 {
+								value = |c
+								if.isTrue.field = portraitcrop
+							}
+					 	}
+						2 < .1
+						2 {
+							if.negate = 1
+							1.if.isTrue.field = landscapecrop
+						}
+					}
+				}
+				height {
+					field = landscapeheight
+					override < plugin.tx_pnfgallery_pi1.renderFile.image.file.width.override
+					override.field = portraitheight
+					innerWrap < plugin.tx_pnfgallery_pi1.renderFile.image.file.width.innerWrap
+				}
+			}
+			# Lightbox
+			params.cObject = IMG_RESOURCE
+			params.cObject {
+				file {
+					import.field = file
+					maxW {
+						field = lightboxwidth
+						if.isTrue.field = lightboxwidth
+					}
+					maxH {
+						field = lightboxheight
+						if.isTrue.field = lightboxheight
+					}
+				}
+				stdWrap {
+					if.isTrue.field = lightbox
+					wrap = data-big="|" 
+					append = TEXT
+					append {
+						field = title
+						wrap = title="|"
+					}
+				}
+			}
+			stdWrap {
+				append = TEXT
+				append {
+					if.isTrue.field = title
+					field = title
+					wrap = <p class="legend"><span class="int">|</span></p>
+				}
+				# galery file
+				typolink {
+					parameter {
+						field = file
+						override.cObject = IMG_RESOURCE
+						override.cObject {
+							file {
+								import.field = file
+							}
+						}	
+					}
+				}
+			}
+		}
+	}
+	themes {
+		masonry {
+			inlineStyle = COA
+			inlineStyle {
+				1 = TEXT
+				1 {
+					field = width
+					wrap = width:|px;
+					if.isTrue.field = width
+				}
+				2 = TEXT
+				2 {
+					field = height
+					wrap = height:|px;
+					if.isTrue.field = height
+				}
+				stdWrap.noTrimWrap = | style="|" |
+			}
+		}
+	}
+}
+[global]

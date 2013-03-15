@@ -1,0 +1,10 @@
+plugin.tx_pnfgallery_pi1 {
+	themes {
+		masonry {
+			# cat=plugin.tx_pnfcapdemat_pi1/themes/masonry/file/a; type=file[html]; label=Template to use: The template file to use.
+			template = EXT:pnf_gallery/themes/masonry/res/template.html
+			# cat=plugin.tx_pnfcapdemat_pi1/themes/masonry/other/a; type=string; label=Theme path: Theme path.
+			path = typo3conf/ext/pnf_gallery/themes/masonry/
+		}
+	}
+}

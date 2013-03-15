@@ -1,0 +1,66 @@
+<titlewidget>
+	<TCEforms>
+		<displayCond>FIELD:theme:IN:WIDGET</displayCond>
+		<label>LLL:EXT:pnf_gallery/themes/widget/locallang_flexform.xml:titlewidget</label>	
+		<config>
+			<type>input</type>
+			<size>30</size>
+			<default></default>
+		</config>
+	</TCEforms>
+</titlewidget>
+<title>
+	<TCEforms>
+		<displayCond>FIELD:theme:IN:WIDGET</displayCond>
+		<label>LLL:EXT:pnf_gallery/themes/widget/locallang_flexform.xml:title</label>	
+		<config>
+			<type>input</type>
+			<size>30</size>
+			<default></default>
+		</config>
+	</TCEforms>
+</title>
+<limit>
+	<TCEforms>
+		<displayCond>FIELD:theme:IN:WIDGET</displayCond>
+		<label>LLL:EXT:pnf_gallery/themes/widget/locallang_flexform.xml:limit</label>	
+		<config>
+			<type>input</type>
+			<size>3</size>
+			<default>5</default>
+		</config>
+	</TCEforms>
+</limit>
+<lightbox>
+	<TCEforms>
+		<displayCond>FIELD:theme:IN:WIDGET</displayCond>
+		<onChange>reload</onChange>
+		<label>LLL:EXT:pnf_gallery/themes/simplegallery/locallang_flexform.xml:lightbox</label>	
+		<config>
+			 <type>check</type>
+			<default>1</default>
+		</config>
+	</TCEforms>
+</lightbox>
+<lightboxwidth>
+	<TCEforms>
+		<displayCond>FIELD:lightbox:=:1</displayCond>
+		<label>LLL:EXT:pnf_gallery/themes/simplegallery/locallang_flexform.xml:lightboxwidth</label>
+		<config>
+			<type>input</type>
+			<size>3</size>
+			<default></default>
+		</config>
+	</TCEforms>
+</lightboxwidth>
+<lightboxheight>
+	<TCEforms>
+		<displayCond>FIELD:lightbox:=:1</displayCond>
+		<label>LLL:EXT:pnf_gallery/themes/simplegallery/locallang_flexform.xml:lightboxheight</label>
+		<config>
+			<type>input</type>
+			<size>3</size>
+			<default></default>
+		</config>
+	</TCEforms>
+</lightboxheight>

@@ -1,0 +1,88 @@
+plugin.tx_pnfgallery_pi1 {
+	themes {
+		simplegallery {
+			template = {$plugin.tx_pnfgallery_pi1.themes.simplegallery.template}
+		}
+	}
+}
+
+[userFunc = user_pnfgalleryOnCurrentPage(simplegalery)]
+page {
+	includeCSS {
+		simplegalleryCSS = {$plugin.tx_pnfgallery_pi1.themes.simplegallery.path}res/style.css
+	}
+	includeJSFooter {
+		galleria = {$plugin.tx_pnfgallery_pi1.themes.simplegallery.path}res/galleria-1.2.7/galleria/galleria-1.2.7.min.js
+		galleria_theme = {$plugin.tx_pnfgallery_pi1.themes.simplegallery.path}res/galleria-1.2.7/galleria/themes/simplegallery/galleria.simplegallery.js
+	}
+}
+plugin.tx_pnfgallery_pi1 {
+	renderFile {
+		image {
+			longdescURL >
+			imageLinkWrap >
+			file {
+				# Thumbs
+				maxW >
+				mawH >
+				width {
+					field = width
+					override.field = thumbnailwidth
+					innerWrap = |c
+					innerWrap.if.isTrue.field = thumbnailcrop
+				}
+				height {
+					field = height
+					override.field = thumbnailheight
+					innerWrap = |c
+					innerWrap.if.isTrue.field = thumbnailcrop
+				}
+			}
+			# Lightbox
+			params.cObject = IMG_RESOURCE
+			params.cObject {
+				file {
+					import.field = file
+					maxW {
+						field = lightboxwidth
+						if.isTrue.field = lightboxwidth
+					}
+					maxH {
+						field = lightboxheight
+						if.isTrue.field = lightboxheight
+					}
+				}
+				stdWrap {
+					if.isTrue.field = lightbox
+					wrap = data-big="|"
+				}
+			}
+			stdWrap {
+				# galery file
+				typolink {
+					parameter {
+						field = file
+						override.cObject = IMG_RESOURCE
+						override.cObject {
+							file {
+								import.field = file
+								maxW.field = width
+								maxH.field = height
+								
+								# width {
+								# 	field = width
+								# 	wrap = |c
+								# }
+								# height {
+								# 	field = height
+								# 	wrap = |c
+								# }
+							}
+						}	
+					}
+				}
+			}
+		}
+	}
+}
+[global]
