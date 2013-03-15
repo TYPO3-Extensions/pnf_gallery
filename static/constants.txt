@@ -1,0 +1,14 @@
+plugin.tx_pnfgallery_pi1 {
+	themes {
+		masonry {
+			# cat=plugin.tx_pnfcapdemat_pi1/themes/masonry/file/a; type=file[html]; label=Template to use: The template file to use.
+			template = EXT:pnf_gallery_damcat/res/template_masonry.html
+		}
+	}
+	renderGallery {
+		# cat=plugin.tx_pnfcapdemat_pi1/renderGallery/damcat_filter/file/a; type=file[html]; label=Template to use for damcat filter: The template file to use for damcat filter.
+		damcat_filter_template = EXT:pnf_gallery_damcat/res/template.html
+		# cat=plugin.tx_pnfcapdemat_pi1/renderGallery/damcat_filter/other/a; type=string; label=Theme path for damcat filter: Theme path for damcat filter.
+		damcat_filter_path = typo3conf/ext/pnf_gallery_damcat/
+	}
+}
