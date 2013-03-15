@@ -57,18 +57,29 @@
 	public function getElements($conf) {
 		$elements = array();
 		$records = null;
-		
+		$this->conf = $conf;
 		switch ($conf['mode']) {
 			case 'DAM_DIRECTORY':
 				if ($conf['dam_directory']) 
-					$records = $this->getRecordsDam($conf['dam_directory']);
+					$records = $this->getRecordsDam($conf['dam_directory'], $conf['dam_subdirectories'], '', $conf['dam_orderby']);
 				break;
 			case 'DAM_RECORDS':
 				if ($conf['dam_records']) {
 					$uidList = t3lib_div::trimExplode(',', $conf['dam_records'], true);
 					array_walk($uidList, array('tx_pnfgallery_dam','cutPrefixRecords'));
 					$uidList = implode(',', $uidList);
-					$records = $this->getRecordsDam('', $uidList);
+					$records = $this->getRecordsDam('', false, $uidList, $conf['dam_orderby']);
+				}
+				break;
+			default:
+				// Hook 
+				if (is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$this->extKey]['tx_pnfgallery_dam']['getElements'])) {
+					foreach ($GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$this->extKey]['tx_pnfgallery_dam']['getElements'] as $_classRef) {
+						$_procObj = & t3lib_div::getUserObj($_classRef);
+						$recordsTmp = $_procObj->getElements($conf, $this);
+						if (is_array($recordsTmp))
+							$records = $recordsTmp;
+					}
 				}
 				break;
 		}
@@ -93,14 +104,26 @@
 	 *	@param	string $uidList	: records uids 
 	 *	@return request results
 	 */
-	private function getRecordsDam($directory = '', $uidList = '') {
+	public function getRecordsDam($directory = '', $subdirectories = false, $uidList = '', $order = '') {		
 		$queryArray = array(
 			'SELECT' => '',
 			'FROM' => '',
 			'WHERE' => '',
+			'GROUPBY' => '',
 			'ORDER' => '',
 			'LIMIT' => '',
 		);
+		switch ($order) {
+			case 'uid':
+				$queryArray['ORDER'] = '`tx_dam`.`uid`';
+				break;
+			case 'crdate':
+				$queryArray['ORDER'] = '`tx_dam`.`date_cr` DESC';
+				break;
+			case 'rand':
+				$queryArray['ORDER'] = 'rand()';
+				break;
+		}
 		$addWhere = array();
 		// $addWhere[] = '`tx_dam`.`file_mime_type` = \'image\'';
 		$addWhere[] = '`tx_dam`.`media_type` = 2'; // => image
@@ -108,6 +131,8 @@
 			$lastChar = substr($directory, -1);
 			if ($lastChar != '/')
 				$directory .= '/';
+			if ($subdirectories)
+				$directory .= '%';
 			$addWhere[] = '`tx_dam`.`file_path` like \'' . $directory . '\'';
 		}
 		if ($uidList) {
@@ -132,7 +157,7 @@
 			`tx_dam`.`vpixels`
 			';
 		$queryArray['FROM'] = '`tx_dam`';
-		$queryArray['WHERE'] =  implode(' AND ', $addWhere) . ' ' . $this->cObj->enableFields('tx_dam');
+		$queryArray['WHERE'] =  implode(' AND ', $addWhere) . ' AND sys_language_uid=0 ' . $this->cObj->enableFields('tx_dam');
 		// Hook 
 		if (is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$this->extKey]['tx_pnfgallery_dam']['recordsQuery'])) {
 			foreach ($GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$this->extKey]['tx_pnfgallery_dam']['recordsQuery'] as $_classRef) {
@@ -145,11 +170,48 @@
 			$queryArray['SELECT'], 
 			$queryArray['FROM'],
 			$queryArray['WHERE'],
-			'',
+			$queryArray['GROUPBY'],
 			$queryArray['ORDER'],
 			$queryArray['LIMIT']
 		);
-		return is_array($rows) ? $rows : array();
+		return $this->getLanguageRecords('tx_dam', $rows);
+	}
+	
+	/**
+	 * get translate record, if exist, each field are merged
+	 *
+	 * @param	string	$table: database tablename
+	 * @param	array	$rows: records to translate
+	 * @return 	array
+	 */	
+	function getLanguageRecords($table, $rows) {
+		$rowsLanguage = array();
+		
+		if (is_array($rows)) {
+			if ($GLOBALS['TSFE']->sys_language_content) {
+				foreach ($rows as $row) {
+					// $OLmode = ($this->sys_language_mode == 'strict' ? 'hideNonTranslated' : '');
+					// $row = $GLOBALS['TSFE']->sys_page->getRecordOverlay($table, $row, $GLOBALS['TSFE']->sys_language_content, '');
+					$records = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows(
+						'`' . $table . '`.*', 
+						'`' . $table . '`', 
+						'`' . $table . '`.`l18n_parent` = ' . $row['uid'] . '  AND `' . $table . '`.`sys_language_uid` = ' . $GLOBALS['TSFE']->sys_language_content . ' ' .$this->cObj->enableFields($table)
+					);
+					if (is_array($records) && !empty($records)) {
+						$translate = $records[0];
+						
+						foreach ($row as $field => &$value) {
+							if ($field != 'uid' && $translate[$field]) 
+								$row[$field] = $translate[$field];
+						}
+					}
+					$rowsLanguage[] = $row;
+				}
+			} else {
+				$rowsLanguage = $rows;
+			}
+		}
+		return $rowsLanguage;
 	}
 	
 	/**
@@ -187,13 +249,20 @@
 			&& $row['data']['general']['lDEF']['source']['vDEF'] == $this->getKey()) {
 							
 			$add[] = array(
-				0 => $GLOBALS['LANG']->sL('LLL:EXT:pnf_gallery/locallang_flexform_pi1.xml:mode.dam.directory'),
+				0 => $GLOBALS['LANG']->sL('LLL:EXT:pnf_gallery/locallang_dam.xml:mode.dam.directory'),
 				1 => 'DAM_DIRECTORY',
 			);					
 			$add[] = array(
-				0 => $GLOBALS['LANG']->sL('LLL:EXT:pnf_gallery/locallang_flexform_pi1.xml:mode.dam.records'),
+				0 => $GLOBALS['LANG']->sL('LLL:EXT:pnf_gallery/locallang_dam.xml:mode.dam.records'),
 				1 => 'DAM_RECORDS',
 			);
+			// Hook 
+			if (is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$this->extKey]['tx_pnfgallery_dam']['addModes'])) {
+				foreach ($GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$this->extKey]['tx_pnfgallery_dam']['addModes'] as $_classRef) {
+					$_procObj = & t3lib_div::getUserObj($_classRef);
+					$_procObj->addModes($add, $flexConfig, $row, $this);
+				}
+			}
 		}
 		return $add;
 	}
@@ -209,6 +278,13 @@
 		$mode = $row['data']['general']['lDEF']['mode']['vDEF'];
 		if($mode == 'DAM_RECORDS' || $mode == 'DAM_DIRECTORY') {
 			$add .= file_get_contents(t3lib_div::getFileAbsFileName('EXT:pnf_gallery/flexform_dam.xml'));
+		}
+		// Hook 
+		if (is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$this->extKey]['tx_pnfgallery_dam']['addDataFlexform'])) {
+			foreach ($GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$this->extKey]['tx_pnfgallery_dam']['addDataFlexform'] as $_classRef) {
+				$_procObj = & t3lib_div::getUserObj($_classRef);
+				$_procObj->addDataFlexform($add, $row, $mode, $this);
+			}
 		}
 		return $add;
 	}

@@ -25,4 +25,5 @@ t3lib_extMgm::addStaticFile($_EXTKEY,'pi1/static/', 'PNF Gallery configuration')
 t3lib_extMgm::addStaticFile($_EXTKEY,'themes/simplegallery/static/', 'PNF Gallery - simplegallery theme');
 t3lib_extMgm::addStaticFile($_EXTKEY,'themes/widget/static/', 'PNF Gallery - widget theme');
 t3lib_extMgm::addStaticFile($_EXTKEY,'themes/mobilegallery/static/', 'PNF Gallery - mobilegallery theme');
+t3lib_extMgm::addStaticFile($_EXTKEY,'themes/masonry/static/', 'PNF Gallery - masonry theme');
 ?>

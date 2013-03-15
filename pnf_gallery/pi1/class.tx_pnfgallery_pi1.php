@@ -241,6 +241,13 @@ class tx_pnfgallery_pi1 extends tslib_pibase {
 			'###WIDTH###' => $this->conf['width'],
 			'###HEIGHT###' => $this->conf['height'],
 		);
+		// Hook 
+		if (is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$this->extKey]['addMarkersBase'])) {
+			foreach ($GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$this->extKey]['addMarkersBase'] as $_classRef) {
+				$_procObj = & t3lib_div::getUserObj($_classRef);
+				$markers = $_procObj->addMarkersBase($markers, $elementArray, $this);
+			}
+		}
 		return $markers;
 	}
 	

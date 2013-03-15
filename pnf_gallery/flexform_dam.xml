@@ -1,7 +1,7 @@
 <dam_records>
 	<TCEforms>							
 		<displayCond>FIELD:mode:IN:DAM_RECORDS</displayCond>
-		<label>LLL:EXT:pnf_gallery/locallang_flexform_pi1.xml:dam_records</label>
+		<label>LLL:EXT:pnf_gallery/locallang_dam.xml:dam_records</label>
 		<config>
 			<type>group</type>
 			<internal_type>db</internal_type>
@@ -18,7 +18,7 @@
 <dam_directory>
 	<TCEforms>
 		<displayCond>FIELD:mode:IN:DAM_DIRECTORY</displayCond>
-		<label>LLL:EXT:pnf_gallery/locallang_flexform_pi1.xml:dam_directory</label>
+		<label>LLL:EXT:pnf_gallery/locallang_dam.xml:dam_directory</label>
 		<config>
 			<type>input</type>
 			<eval>trim</eval>
@@ -39,3 +39,39 @@
 		</config>
 	</TCEforms>
 </dam_directory>
+<dam_subdirectories>
+	<TCEforms>
+		<displayCond>FIELD:mode:IN:DAM_DIRECTORY</displayCond>
+		<label>LLL:EXT:pnf_gallery/locallang_dam.xml:dam_subdirectories</label>		
+		<config>
+			 <type>check</type>
+			<default>1</default>
+		</config>
+	</TCEforms>
+</dam_subdirectories>
+<dam_orderby>
+	<TCEforms>
+		<displayCond>FIELD:mode:IN:DAM_DIRECTORY</displayCond>
+		<label>LLL:EXT:pnf_gallery/locallang_dam.xml:dam_orderby</label>
+		<config>
+			<type>select</type>
+			<items type="array">
+				<numIndex index="0" type="array">
+					<numIndex index="0">LLL:EXT:pnf_gallery/locallang_dam.xml:dam_orderby.uid</numIndex>
+					<numIndex index="1">uid</numIndex>
+				</numIndex>
+				<numIndex index="1" type="array">
+					<numIndex index="0">LLL:EXT:pnf_gallery/locallang_dam.xml:dam_orderby.crdate</numIndex>
+					<numIndex index="1">crdate</numIndex>
+				</numIndex>
+				<numIndex index="2" type="array">
+					<numIndex index="0">LLL:EXT:pnf_gallery/locallang_dam.xml:dam_orderby.rand</numIndex>
+					<numIndex index="1">rand</numIndex>
+				</numIndex>
+			</items>
+			<minitems>1</minitems>
+			<maxitems>1</maxitems>
+			<size>1</size>
+		</config>
+	</TCEforms>
+</dam_orderby>

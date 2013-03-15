@@ -12,10 +12,6 @@
 			<label index="width">Largeur de la galerie</label>
 			<label index="height">Hauteur de la galerie</label>
 			<label index="mode">Mode</label>
-			<label index="mode.dam.directory">Répertoire d'images</label>
-			<label index="mode.dam.records">Choix d'images (DAM)</label>
-			<label index="dam_directory">Répertoire</label>
-			<label index="dam_records">Images</label>
 			<label index="theme">Thème graphique</label>
 		</languageKey>
 	</data>

@@ -11,5 +11,6 @@ tx_pnfgallery_sources_manager::subscribe('tx_pnfgallery_dam');
 tx_pnfgallery_themes_manager::subscribe('tx_pnfgallery_simplegallery');
 tx_pnfgallery_themes_manager::subscribe('tx_pnfgallery_widget');
 tx_pnfgallery_themes_manager::subscribe('tx_pnfgallery_mobilegallery');
+tx_pnfgallery_themes_manager::subscribe('tx_pnfgallery_masonry');
 
 ?>

@@ -14,10 +14,10 @@ $EM_CONF[$_EXTKEY] = array(
 	'title' => 'Gallery',
 	'description' => '',
 	'category' => 'plugin',
-	'author' => 'Plan Net',
-	'author_email' => 'technique@in-cite.net',
+	'author' => 'Plan.Net France',
+	'author_email' => 'typo3@plan-net.fr',
 	'shy' => '',
-	'dependencies' => '',
+	'dependencies' => 'dam',
 	'conflicts' => '',
 	'priority' => '',
 	'module' => '',
@@ -32,6 +32,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'version' => '0.0.1',
 	'constraints' => array(
 		'depends' => array(
+			'dam' => '',
 		),
 		'conflicts' => array(
 		),

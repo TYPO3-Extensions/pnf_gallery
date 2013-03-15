@@ -1,3 +1,15 @@
+2013-03-15 Emilie SAGNIEZ  <emilie.sagniez@plan-net.fr>
+	* Add hook to tx_pnfgallery_pi1->getMarkersBase
+	* Add hook to tx_pnfgallery_dam class
+	* Add DAM source configuration: subdirectories, order
+	* Activate multilanguage at DAM source
+	* Change extension author and dependency
+	* Add new theme based of jQuery Masonry
+	* Improvement in PnfGalleryLightbox class javascript: 
+		- return current obj for add possibility to use later (reload images list for example)
+		- configure lightbox content line-height for add possibility to center image 
+		- new option: configure other container of lightbox div (default body)
+
 2013-03-11 Emilie SAGNIEZ  <emilie.sagniez@plan-net.fr>
 	* Version changed to 0.0.1
 
