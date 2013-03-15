@@ -1,0 +1,45 @@
+plugin.tx_pnfgallery_pi1 {	
+	renderGallery {
+		damcat_filter_template = {$plugin.tx_pnfgallery_pi1.renderGallery.damcat_filter_template}	
+		damcat_filter_link = TEXT
+		damcat_filter_link {
+			typolink {
+				parameter.data = tsfe:id
+				returnLast = url
+				additionalParams.field = uid
+				additionalParams.wrap = &tx_pnfgallery_damcat[uid]=|
+			}
+		}
+		damcat_delete_filter = TEXT
+		damcat_delete_filter {
+			typolink {
+				parameter.data = tsfe:id
+				ATagParams = class="delete_filter"
+			}
+			data = LLL:EXT:pnf_gallery_damcat/locallang.xml:link_delete_filter
+		}
+	}
+	renderFile {
+		damcat_uid {
+			split {
+				token.char = 44
+				cObjNum = 1|*||*|2
+				1 {
+					current = 1
+					noTrimWrap = | damcat| |
+				}
+				2 {
+					current = 1
+					noTrimWrap = | damcat| |
+				}
+			}
+		}
+	}
+}
+
+page {
+	includeCSS {
+		pnf_gallery_damcat = {$plugin.tx_pnfgallery_pi1.renderGallery.damcat_filter_path}res/style.css
+	}
+}
+

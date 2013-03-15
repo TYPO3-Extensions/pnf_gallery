@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for source DAM for 'pnf_gallery' extension</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="mode.damcat.records">Choix de catégories (DAM)</label>
+			<label index="damcat_records">Catégories</label>
+			<label index="link_delete_filter">Afficher tout</label>
+		</languageKey>
+	</data>
+</T3locallang>

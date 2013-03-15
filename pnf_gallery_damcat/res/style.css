@@ -1,0 +1,87 @@
+.damcatfilter,
+.damcatfilter ul li.hover ul ,
+.masonry .pnf-gallery-lightbox-overlay {
+	background: #1E1E1E;
+}
+
+	.damcatfilter ul {
+		float: left;
+		width: 100%;
+		position: relative;
+		font-size: 14px;
+		padding: 0;
+		margin: 0;
+	}
+	
+		.damcatfilter ul li{
+			float: left;
+		}
+		.damcatfilter ul li,
+		.damcatfilter ul li a{
+			color: #999A9B;
+			text-decoration: none;
+		}
+			.damcatfilter ul li a{
+				padding: 10px 0 10px 30px;
+				margin: 0 0 0 30px;
+				display: block;
+				background: transparent url('img/puce.png') no-repeat 0 center;
+			}
+			
+			.damcatfilter ul li a:hover {
+				color: #FFF;
+				background-image: url('img/puce_hover.png');
+			}
+						
+			/* Submenu */
+			.damcatfilter ul li.hover {
+			}
+			
+				.damcatfilter ul li ul {
+					display: none;
+					position: absolute;
+					z-index:10;
+					left: 0;
+					font-size: 11px;
+					width: 100%;
+				}
+				
+					.damcatfilter ul li ul li {
+						width: 33%;
+					}
+						.damcatfilter ul li ul li a{
+							background-image: url('img/spuce.png');
+							padding: 5px 15px;
+							
+						}
+						.damcatfilter ul li ul li a:hover{
+							background-image: url('img/spuce_hover.png');
+						}
+						
+.tx-pnfgallery-pi1-masonry .pnf-gallery-lightbox-close {
+	background: transparent url('img/close.png') no-repeat 0 0;
+	width: 46px;
+	height: 46px;
+	font-size: 1px;
+}
+
+.tx-pnfgallery-pi1-masonry .pnf-gallery-lightbox-browser .pnf-gallery-lightbox-prev {
+	background-image: url('img/left.png');
+	left: 30px;
+}
+.tx-pnfgallery-pi1-masonry .pnf-gallery-lightbox-browser .pnf-gallery-lightbox-next {
+	background-image: url('img/right.png');
+	right: 30px;
+}
+
+.tx-pnfgallery-pi1-masonry .pnf-gallery-lightbox-content { 
+	background: none;
+}
+.tx-pnfgallery-pi1-masonry .pnf-gallery-lightbox-overlay {
+	opacity:1;
+	filter:none;	
+}
+.tx-pnfgallery-pi1-masonry .pnf-gallery-lightbox-counter {
+	display: none;
+}
+

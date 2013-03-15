@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Template pnf_gallery theme masonry</title>
+</head>
+<body>
+
+<h2>Template</h2>
+
+<!-- ###GALLERY### begin -->
+<div class="tx-pnfgallery-pi1-masonry" id="pnf_gallery###CEID###" ###INLINE_STYLE###>
+	###DAMCAT_FILTER###
+	<div class="masonry" id="masonry###CEID###">
+		<div class="imageContainer"><!-- ###FILES### begin -->
+			<div class="item ###DAMCAT_UID###">
+				###FILE###
+			</div><!-- ###FILES### end -->
+		</div>
+		<div style="clear:both;"></div>
+	</div>
+</div>
+<script type="text/javascript">
+	/*<![CDATA[*/
+	$(function(){
+		// Masonry effect
+		 $('#masonry###CEID###').masonry({
+			itemSelector : '.item',
+			 isAnimated: true
+		});
+		// Legend
+		$('#masonry###CEID### .item .legend').hide();
+		$('#masonry###CEID### .item').hover(function() {
+			$(this).children('.legend').show();
+		}, function() {
+			$(this).children('.legend').hide();
+		});
+		// Lightbox
+		var lightbox = $('#masonry###CEID###').pnfgallerylightbox({
+			'data': '#masonry###CEID### .imageContainer .item',
+			'container': '#pnf_gallery###CEID###'
+		});		
+		
+		// Filter
+		$("#damcatfilter###CEID### a.delete_filter").click(function() {
+			var imagesAll = $('#masonry###CEID### .imageContainer div').removeClass('itemHide').removeClass('item').addClass('item').show();
+			// Reload
+			$('#masonry###CEID###').masonry('reload');
+			lightbox[0].reload();
+			return false;
+		});
+		$("#damcatfilter###CEID### a[class^='damcat']").click(function() {
+			var categories = [];
+			categories.push($(this).attr('class'));
+			var sub = $(this).parent('li').children('ul');
+			if (sub) {
+				sub.children('li').each(function() {
+					var cat = $(this).children("a[class^='damcat']");
+					if (cat) {
+						categories.push(cat.attr('class'));
+					}
+				});
+			}
+			var selector = '';
+			for (i=0; i< categories.length; i++) {
+				if (i > 0)
+					selector += ", ";
+				selector += "#masonry###CEID### .imageContainer .itemHide[class*='" + categories[i] + "']"
+			}
+			var imagesAll = $('#masonry###CEID### .imageContainer div').removeClass('item').addClass('itemHide');
+			// Images to view
+			// var images = $("#masonry###CEID### .imageContainer .itemHide[class*='" + $(this).attr('class') + "']");
+			var images = $(selector);
+			images.removeClass('itemHide').addClass('item');
+			//  Images to Hide
+			var imagesHidden = $('#masonry###CEID### .imageContainer .itemHide');
+			// Effect
+			imagesHidden.hide();
+			images.show();
+			
+			// Reload
+			$('#masonry###CEID###').masonry('reload');
+			lightbox[0].reload();
+			return false;
+		});
+	});
+	/*]]>*/
+</script>
+<!-- ###GALLERY### end -->
+
+

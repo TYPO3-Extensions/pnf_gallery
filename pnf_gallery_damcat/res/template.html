@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Template pnf_gallery damcat filter</title>
+</head>
+<body>
+
+<h2>Template</h2>
+
+<!-- ###FILTER### begin -->
+<div class="damcatfilter" id="damcatfilter###CEID###">
+	<ul>
+		<li>###DELETE_FILTER###</li><!-- ###SUBPART_CATEGORIES### begin -->
+	<!-- ###SUBPART_CATEGORY### begin -->
+		<li><a href="###CATEGORY_LINK###" class="damcat###CATEGORY_UID###">###CATEGORY_TITLE###</a><!-- ###SUBPART_SUBCATEGORIES### begin -->
+			<ul><!-- ###SUBPART_SUBCATEGORY### begin -->
+				<li><a href="###SUBCATEGORY_LINK###" class="damcat###SUBCATEGORY_UID###">###SUBCATEGORY_TITLE###</a>
+				###SUBCATEGORY_CHILDREN###</li><!-- ###SUBPART_SUBCATEGORY### end -->
+			</ul><!-- ###SUBPART_SUBCATEGORIES### end -->
+		</li><!-- ###SUBPART_CATEGORY### end -->
+	
+	<!-- ###SUBPART_CATEGORIES### end -->
+	</ul>
+	<div class="clear"></div>
+</div>
+<script type="text/javascript">
+	/*<![CDATA[*/
+	$(function(){
+		$('#damcatfilter###CEID### > ul > li').hover(function() {
+			$(this).addClass('hover');
+			$(this).children('ul').show();
+		}, function() {
+			$(this).removeClass('hover');
+			$(this).children('ul').hide();
+		});		
+	});
+	/*]]>*/
+</script>
+<!-- ###FILTER### end -->
+
+
+			
