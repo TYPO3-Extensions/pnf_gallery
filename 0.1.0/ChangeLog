@@ -1,0 +1,29 @@
+2013-03-15 Emilie SAGNIEZ  <emilie.sagniez@plan-net.fr>
+	* Add hook to tx_pnfgallery_pi1->getMarkersBase
+	* Add hook to tx_pnfgallery_dam class
+	* Add DAM source configuration: subdirectories, order
+	* Activate multilanguage at DAM source
+	* Change extension author and dependency
+	* Add new theme based of jQuery Masonry
+	* Improvement in PnfGalleryLightbox class javascript: 
+		- return current obj for add possibility to use later (reload images list for example)
+		- configure lightbox content line-height for add possibility to center image 
+		- new option: configure other container of lightbox div (default body)
+	* Version changed to 0.1.0
+
+2013-03-11 Emilie SAGNIEZ  <emilie.sagniez@plan-net.fr>
+	* Version changed to 0.0.1
+
+2013-02-22 Guillaume Germain <guillaume.germain@plan-net.fr>
+	* Fix: Usage of PHP short open tags.
+
+2013-02-22 Guillaume Germain <guillaume.germain@plan-net.fr>
+	* Bug Fix: Added empty item in plugin source field to allow form reloading when selecting a valid value 
+
+2012-10-02 Emilie SAGNIEZ  <emilie@in-cite.net>
+	* First version stable
+	* Initial import
+
+2012-07-31 Plan Net  <technique@in-cite.net>
+
+	* initial code generated with kickstarter
