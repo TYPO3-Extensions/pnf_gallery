@@ -36,6 +36,8 @@
  */
  class tx_pnfgallery_damcat {
 	
+	var $extKey        = 'pnf_gallery';	// The extension key.
+	
 	/**
 	 *	Get images to damcat mode
 	 *	Use 'tx_pnfgallery_dam' source hook
@@ -160,6 +162,12 @@
 		$subpart_subcategory = $this->cObj->getSubpart($content, '###SUBPART_SUBCATEGORY###');
 		
 		if (is_array($categories) && !empty($categories)) {
+			if (is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$this->extKey]['tx_pnfgallery_damcat']['sortCategories'])) {
+				foreach ($GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$this->extKey]['tx_pnfgallery_damcat']['sortCategories'] as $_classRef) {
+					$_procObj = & t3lib_div::getUserObj($_classRef);
+					$_procObj->sortCategories($categories, $conf, $this);
+				}
+			}
 			$tscObj = t3lib_div::makeInstance('tslib_cObj');
 			foreach ($categories as $category) {
 				$tscObj->start($category, '');

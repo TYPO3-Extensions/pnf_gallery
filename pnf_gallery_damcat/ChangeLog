@@ -1,6 +1,7 @@
 2013-04-02 Emilie SAGNIEZ  <emilie.sagniez@plan-net.fr>
 	* Add classes for categories filter with subcategories
 	* Reorganize typoscript
+	* Hook for add the possibility to order categories
 	
 2013-03-15 Emilie SAGNIEZ  <emilie.sagniez@plan-net.fr>
 	* First version stable
