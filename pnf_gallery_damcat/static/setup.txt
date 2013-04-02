@@ -1,22 +1,29 @@
 plugin.tx_pnfgallery_pi1 {	
 	renderGallery {
-		damcat_filter_template = {$plugin.tx_pnfgallery_pi1.renderGallery.damcat_filter_template}	
-		damcat_filter_link = TEXT
-		damcat_filter_link {
-			typolink {
-				parameter.data = tsfe:id
-				returnLast = url
-				additionalParams.field = uid
-				additionalParams.wrap = &tx_pnfgallery_damcat[uid]=|
+		damcat_filter {
+			template = {$plugin.tx_pnfgallery_pi1.renderGallery.damcat_filter_template}
+			title = TEXT
+			title {
+				field = title
 			}
-		}
-		damcat_delete_filter = TEXT
-		damcat_delete_filter {
-			typolink {
-				parameter.data = tsfe:id
-				ATagParams = class="delete_filter"
+			link = TEXT
+			link {
+				typolink {
+					parameter.data = tsfe:id
+					returnLast = url
+					additionalParams.field = uid
+					additionalParams.wrap = &tx_pnfgallery_damcat[uid]=|
+				}
 			}
-			data = LLL:EXT:pnf_gallery_damcat/locallang.xml:link_delete_filter
+			delete = TEXT
+			delete {
+				typolink {
+					parameter.data = tsfe:id
+					ATagParams = class="delete_filter"
+				}
+				data = LLL:EXT:pnf_gallery_damcat/locallang.xml:link_delete_filter
+			}
+			subcategories = class="has_subcategories"
 		}
 	}
 	renderFile {

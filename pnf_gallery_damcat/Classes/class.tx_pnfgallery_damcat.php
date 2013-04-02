@@ -151,7 +151,7 @@
 	private function getCategoriesFilter($catuids, $piObj) {
 		$categories = array();
 		$this->getCategoriesRecursive($categories, $catuids);
-		$content = $piObj->getTemplate($piObj->conf['renderGallery.']['damcat_filter_template'], '###FILTER###');
+		$content = $piObj->getTemplate($piObj->conf['renderGallery.']['damcat_filter.']['template'], '###FILTER###');
 		$output_categories = '';
 		$output_category = '';
 		$subpart_categories = $this->cObj->getSubpart($content, '###SUBPART_CATEGORIES###');
@@ -166,8 +166,9 @@
 		
 				$cMarkers = array(
 					'###CATEGORY_UID###' => $category['uid'],
-					'###CATEGORY_TITLE###' => $category['title'],
-					'###CATEGORY_LINK###' => $tscObj->cObjGetSingle($piObj->conf['renderGallery.']['damcat_filter_link'], $piObj->conf['renderGallery.']['damcat_filter_link.']),
+					'###CATEGORY_TITLE###' => $tscObj->cObjGetSingle($piObj->conf['renderGallery.']['damcat_filter.']['title'], $piObj->conf['renderGallery.']['damcat_filter.']['title.']),
+					'###HAS_SUBCATEGORIES###' => (is_array($category['children']) && !empty($category['children'])) ? $piObj->conf['renderGallery.']['damcat_filter.']['subcategories'] : '',
+					'###CATEGORY_LINK###' => $tscObj->cObjGetSingle($piObj->conf['renderGallery.']['damcat_filter.']['link'], $piObj->conf['renderGallery.']['damcat_filter.']['link.']),
 				);
 				$cSubparts = array(
 					'###SUBPART_SUBCATEGORIES###' => $this->renderSubcategories($category['children'], $subpart_subcategories, $subpart_subcategory, $piObj, $tscObj),
@@ -179,7 +180,7 @@
 		
 		$sMarkers = array(
 			'###CEID###' => $this->cObj->data['uid'],
-			'###DELETE_FILTER###' => $this->cObj->cObjGetSingle($piObj->conf['renderGallery.']['damcat_delete_filter'], $piObj->conf['renderGallery.']['damcat_delete_filter.']),
+			'###DELETE_FILTER###' => $this->cObj->cObjGetSingle($piObj->conf['renderGallery.']['damcat_filter.']['delete'], $piObj->conf['renderGallery.']['damcat_filter.']['delete.']),
 		);
 		$sSubparts = array('###SUBPART_CATEGORIES###' => $output_categories);
 		$content = $this->cObj->substituteMarkerArrayCached($content, $sMarkers, $sSubparts);
@@ -195,7 +196,7 @@
 				$sMarkers = array(
 					'###SUBCATEGORY_UID###' => $subcategory['uid'],
 					'###SUBCATEGORY_TITLE###' => $subcategory['title'],
-					'###SUBCATEGORY_LINK###' =>  $tscObj->cObjGetSingle($piObj->conf['renderGallery.']['damcat_filter_link'], $piObj->conf['renderGallery.']['damcat_filter_link.']),
+					'###SUBCATEGORY_LINK###' =>  $tscObj->cObjGetSingle($piObj->conf['renderGallery.']['damcat_filter.']['link'], $piObj->conf['renderGallery.']['damcat_filter.']['link.']),
 					'###SUBCATEGORY_CHILDREN###' => $this->renderSubcategories($subcategory['children'], $subpart_subcategories, $subpart_subcategory, $piObj, $tscObj),
 				);
 				$output_sub .= $this->cObj->substituteMarkerArray($subpart_subcategory, $sMarkers);
