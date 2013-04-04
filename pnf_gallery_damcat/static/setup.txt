@@ -24,6 +24,7 @@ plugin.tx_pnfgallery_pi1 {
 				data = LLL:EXT:pnf_gallery_damcat/locallang.xml:link_delete_filter
 			}
 			subcategories = class="has_subcategories"
+			subcategoriesColumns = 4
 		}
 	}
 	renderFile {

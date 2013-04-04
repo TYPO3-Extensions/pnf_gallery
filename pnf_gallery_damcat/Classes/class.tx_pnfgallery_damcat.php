@@ -199,6 +199,20 @@
 		$output = '';
 		if (is_array($subcategories) && !empty($subcategories)) {
 			$output_sub = '';
+			$sFirstline = $this->cObj->getSubpart($subpart_subcategory, '###FIRSTLINE###');
+			$sLastline = $this->cObj->getSubpart($subpart_subcategory, '###LASTLINE###');
+			$sNewline = $this->cObj->getSubpart($subpart_subcategory, '###NEWLINE###');
+			$sNewlineLast = $this->cObj->getSubpart($subpart_subcategory, '###NEWLINELAST###');
+			$counter = 1;
+			$counterLine = 1;
+			$lastLine = count($subcategories);
+			if ($piObj->conf['renderGallery.']['damcat_filter.']['subcategoriesColumns'] > 1) {
+				$newLine = intval($lastLine / $piObj->conf['renderGallery.']['damcat_filter.']['subcategoriesColumns']);
+				if ($lastLine % $piObj->conf['renderGallery.']['damcat_filter.']['subcategoriesColumns'])
+					$newLine++;
+			} else {
+				$newLine = -1;
+			}
 			foreach ($subcategories as $subcategory) {
 				$tscObj->start($subcategory, '');
 				$sMarkers = array(
@@ -207,7 +221,15 @@
 					'###SUBCATEGORY_LINK###' =>  $tscObj->cObjGetSingle($piObj->conf['renderGallery.']['damcat_filter.']['link'], $piObj->conf['renderGallery.']['damcat_filter.']['link.']),
 					'###SUBCATEGORY_CHILDREN###' => $this->renderSubcategories($subcategory['children'], $subpart_subcategories, $subpart_subcategory, $piObj, $tscObj),
 				);
-				$output_sub .= $this->cObj->substituteMarkerArray($subpart_subcategory, $sMarkers);
+				$sSubparts = array(
+					'###FIRSTLINE###' => ($counter == 1) ? $sFirstline : '',
+					'###LASTLINE###' => ($counter == $lastLine) ? $sLastline : '',
+					'###NEWLINE###' => ($counter != 1 && $counterLine == 1 && ($counter + $newLine <= $lastLine)) ? $sNewline : '' ,
+					'###NEWLINELAST###' => ($counter != 1 && $counterLine == 1 && ($counter + $newLine > $lastLine)) ? $sNewlineLast : '' ,
+				);
+				$output_sub .= $this->cObj->substituteMarkerArrayCached($subpart_subcategory, $sMarkers, $sSubparts);
+				$counter++;
+				$counterLine = ($counterLine == $newLine) ? 1 : $counterLine + 1;
 			}
 			$output = $this->cObj->substituteSubpart($subpart_subcategories, '###SUBPART_SUBCATEGORY###', $output_sub);
 		}

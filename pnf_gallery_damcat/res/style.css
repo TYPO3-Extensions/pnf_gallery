@@ -1,5 +1,5 @@
 .damcatfilter,
-.damcatfilter ul li.hover ul ,
+.damcatfilter ul li.hover div.sub ,
 .masonry .pnf-gallery-lightbox-overlay {
 	background: #1E1E1E;
 }
@@ -37,24 +37,31 @@
 			.damcatfilter ul li.hover {
 			}
 			
-				.damcatfilter ul li ul {
+				.damcatfilter ul li div.sub {
 					display: none;
 					position: absolute;
 					z-index:10;
 					left: 0;
 					font-size: 11px;
 					width: 100%;
+					padding-left: 10px;
+				}
+				.damcatfilter ul li.hover div.sub {
+					display:block;
 				}
 				
-					.damcatfilter ul li ul li {
-						width: 33%;
+					.damcatfilter ul li div.sub ul {
+						width: 24%;
 					}
-						.damcatfilter ul li ul li a{
+						.damcatfilter ul li div.sub ul li{ 
+							float: none;
+						}
+						.damcatfilter ul li div.sub ul li a{
 							background-image: url('img/spuce.png');
 							padding: 5px 15px;
 							
 						}
-						.damcatfilter ul li ul li a:hover{
+						.damcatfilter ul li div.sub ul li a:hover{
 							background-image: url('img/spuce_hover.png');
 						}
 						

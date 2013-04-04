@@ -13,10 +13,15 @@
 		<li>###DELETE_FILTER###</li><!-- ###SUBPART_CATEGORIES### begin -->
 	<!-- ###SUBPART_CATEGORY### begin -->
 		<li ###HAS_SUBCATEGORIES###><a href="###CATEGORY_LINK###" class="damcat###CATEGORY_UID###">###CATEGORY_TITLE###</a><!-- ###SUBPART_SUBCATEGORIES### begin -->
-			<ul><!-- ###SUBPART_SUBCATEGORY### begin -->
-				<li><a href="###SUBCATEGORY_LINK###" class="damcat###SUBCATEGORY_UID###">###SUBCATEGORY_TITLE###</a>
-				###SUBCATEGORY_CHILDREN###</li><!-- ###SUBPART_SUBCATEGORY### end -->
-			</ul><!-- ###SUBPART_SUBCATEGORIES### end -->
+			<div class="sub"><!-- ###SUBPART_SUBCATEGORY### begin -->
+				<!-- ###FIRSTLINE### --><ul><!-- ###FIRSTLINE### -->
+				<!-- ###NEWLINE### --></ul><ul><!-- ###NEWLINE### -->
+				<!-- ###NEWLINELAST### --></ul><ul class="last"><!-- ###NEWLINELAST### -->
+					<li><a href="###SUBCATEGORY_LINK###" class="damcat###SUBCATEGORY_UID###">###SUBCATEGORY_TITLE###</a>
+					###SUBCATEGORY_CHILDREN###</li>
+				<!-- ###LASTLINE### --></ul><!-- ###LASTLINE### -->
+				<!-- ###SUBPART_SUBCATEGORY### end -->
+			</div><!-- ###SUBPART_SUBCATEGORIES### end -->
 		</li><!-- ###SUBPART_CATEGORY### end -->
 	
 	<!-- ###SUBPART_CATEGORIES### end -->
@@ -28,10 +33,8 @@
 	$(function(){
 		$('#damcatfilter###CEID### > ul > li').hover(function() {
 			$(this).addClass('hover');
-			$(this).children('ul').show();
 		}, function() {
 			$(this).removeClass('hover');
-			$(this).children('ul').hide();
 		});		
 	});
 	/*]]>*/

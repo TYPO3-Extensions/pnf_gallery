@@ -1,3 +1,6 @@
+2013-04-04 Emilie SAGNIEZ  <emilie.sagniez@plan-net.fr>
+	* Add configuration to view subcategories columns
+	
 2013-04-02 Emilie SAGNIEZ  <emilie.sagniez@plan-net.fr>
 	* Add classes for categories filter with subcategories
 	* Reorganize typoscript
