@@ -79,13 +79,15 @@
 		$inlinecObj = t3lib_div::makeInstance('tslib_cObj');
 		$inlinecObj->start($conf, '');
 		$markersArray['###INLINE_STYLE###'] = $inlinecObj->cObjGetSingle($conf['themes.']['masonry.']['inlineStyle'], $conf['themes.']['masonry.']['inlineStyle.']);
-					
+		$markersArray['###LINK_NEXTPAGE###'] = $inlinecObj->cObjGetSingle($conf['themes.']['masonry.']['nextPage'], $conf['themes.']['masonry.']['nextPage.']);
+		
 		$content = $piObj->getTemplate($conf['themes.']['masonry.']['template'], '###GALLERY###');
 		$subpartElement = $this->cObj->getSubpart($content, '###FILES###');
 		$outputElement = '';
 		
 		if ($confThemes['limit']) {
-			$elements = array_slice($elements, 0, $confThemes['limit'], true);
+			$begin = $piObj->piVars['page'] ? ($piObj->piVars['page'] * $confThemes['limit']) : 0;
+			$elements = array_slice($elements, $begin, $confThemes['limit'], true);
 		}
 		foreach ($elements as $element) {
 			$elementConf = array_merge($element, $confThemes);

@@ -1,3 +1,7 @@
+2013-04-05 Emilie SAGNIEZ  <emilie.sagniez@plan-net.fr>
+	* Add infinitescroll to Masonry theme
+	* Refactoring Masonry JS
+	
 2013-03-15 Emilie SAGNIEZ  <emilie.sagniez@plan-net.fr>
 	* Add hook to tx_pnfgallery_pi1->getMarkersBase
 	* Add hook to tx_pnfgallery_dam class

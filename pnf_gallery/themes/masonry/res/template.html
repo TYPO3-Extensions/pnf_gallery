@@ -17,27 +17,12 @@
 		</div>
 		<div style="clear:both;"></div>
 	</div>
+	<div class="nav"><a href="###LINK_NEXTPAGE###"></a></div>
 </div>
 <script type="text/javascript">
 	/*<![CDATA[*/
 	$(function(){
-		// Masonry effect
-		 $('#masonry###CEID###').masonry({
-			itemSelector : '.item',
-			 isAnimated: true
-		});
-		// Legend
-		$('#masonry###CEID### .item .legend').hide();
-		$('#masonry###CEID### .item').hover(function() {
-			$(this).children('.legend').show();
-		}, function() {
-			$(this).children('.legend').hide();
-		});
-		// Lightbox
-		var lightbox = $('#masonry###CEID###').pnfgallerylightbox({
-			'data': $('#masonry###CEID### .imageContainer .item'),
-			'container': '#pnf_gallery###CEID###'
-		});
+		pnfGalleryMasonry_init(###CEID###);
 	});
 	/*]]>*/
 </script>

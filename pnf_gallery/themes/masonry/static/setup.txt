@@ -14,7 +14,9 @@ page {
 	}
 	includeJSFooter {
 		masonry = {$plugin.tx_pnfgallery_pi1.themes.masonry.path}res/jquery.masonry.min.js
+		infinite-scroll = {$plugin.tx_pnfgallery_pi1.themes.masonry.path}res/jquery.infinitescroll.min.js
 		pnf_gallery_lightbox = typo3conf/ext/pnf_gallery/res/pnf_gallery_lightbox.js
+		pnf_gallery_masonry = {$plugin.tx_pnfgallery_pi1.themes.masonry.path}res/pnf_masonry.js
 	}
 }
 plugin.tx_pnfgallery_pi1 {
@@ -136,6 +138,25 @@ plugin.tx_pnfgallery_pi1 {
 					if.isTrue.field = height
 				}
 				stdWrap.noTrimWrap = | style="|" |
+			}
+			nextPage = TEXT
+			nextPage {
+				typolink {
+					parameter.data = tsfe:id
+					returnLast = url
+					forceAbsoluteUrl = 1
+					additionalParams = 1
+					additionalParams {
+						override.cObject = TEXT
+						override.cObject {
+							if.isTrue.data = GP:tx_pnfgallery_pi1|page
+							data = GP:tx_pnfgallery_pi1|page
+							stdWrap.wrap = | + 1
+							prioriCalc = 1
+						}
+						wrap = &tx_pnfgallery_pi1[page]=|
+					}
+				}
 			}
 		}
 	}
