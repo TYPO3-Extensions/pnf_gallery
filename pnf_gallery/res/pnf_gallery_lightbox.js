@@ -12,6 +12,7 @@ PnfGalleryLightbox = function() {
 		images : [],
 		imageCurrent : 0,
 		container : 'body',
+		titleTag : 'title',
         init : function() {
             if ( lightbox.initialized ) {
                 return;
@@ -19,6 +20,8 @@ PnfGalleryLightbox = function() {
             lightbox.initialized = true;
 			if (self._options.container)
 				lightbox.container = self._options.container;
+			if (self._options.titleTag)
+				lightbox.titleTag = self._options.titleTag;
 				
 			$(lightbox.container).append('<div class="pnf-gallery-lightbox-overlay"></div>');
 			$(lightbox.container).append('<div class="pnf-gallery-lightbox-box"></div>');
@@ -91,10 +94,10 @@ PnfGalleryLightbox = function() {
 			} else {
 				data = lightbox.images[lightbox.imageCurrent];
 				content = $(data).clone();
-				if (data.attr('title'))
-					legend = '<p>' + data.attr('title') + '</p>';
+				if (data.attr(lightbox.titleTag))
+					legend = '<p>' + data.attr(lightbox.titleTag) + '</p>';
 				if (data.attr('data-big')) {
-					content = '<img src="' + data.attr('data-big') + '" title="' + data.attr('title') + '" alt="' + data.attr('alt') + '" />';
+					content = '<img src="' + data.attr('data-big') + '" ' + lightbox.titleTag + '="' + data.attr(lightbox.titleTag) + '" alt="' + data.attr('alt') + '" />';
 				}
 			}
 			$(lightbox.container + ' > .pnf-gallery-lightbox-box > .pnf-gallery-lightbox-content').append(content);
