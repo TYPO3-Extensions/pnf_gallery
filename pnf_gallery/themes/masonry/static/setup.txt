@@ -13,10 +13,10 @@ page {
 		masonryCSS = {$plugin.tx_pnfgallery_pi1.themes.masonry.path}res/style.css
 	}
 	includeJSFooter {
-		masonry = {$plugin.tx_pnfgallery_pi1.themes.masonry.path}res/jquery.masonry.min.js
+		isotope = {$plugin.tx_pnfgallery_pi1.themes.masonry.path}res/jquery.isotope.min.js
 		infinite-scroll = {$plugin.tx_pnfgallery_pi1.themes.masonry.path}res/jquery.infinitescroll.min.js
 		pnf_gallery_lightbox = typo3conf/ext/pnf_gallery/res/pnf_gallery_lightbox.js
-		pnf_gallery_masonry = {$plugin.tx_pnfgallery_pi1.themes.masonry.path}res/pnf_masonry.js
+		pnf_gallery_isotope = {$plugin.tx_pnfgallery_pi1.themes.masonry.path}res/pnf_isotope.js
 	}
 }
 plugin.tx_pnfgallery_pi1 {

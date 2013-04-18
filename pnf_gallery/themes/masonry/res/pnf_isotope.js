@@ -1,17 +1,18 @@
 function pnfGalleryMasonry_init(ceid) {
-	pnfGalleryMasonry_initMasonry(ceid);
+	var $container = $('#masonry' + ceid + ' .imageContainer');
+	pnfGalleryMasonry_initIsotope($container);
 	pnfGalleryMasonry_initLegend(ceid);
 	var lightbox = pnfGalleryMasonry_initLightbox(ceid);
-	pnfGalleryMasonry_initScroll(ceid);
+	pnfGalleryMasonry_initScroll($container, ceid, lightbox);
 }
- function pnfGalleryMasonry_initMasonry(ceid) {
+function pnfGalleryMasonry_initIsotope($container) {
 	// Masonry effect
-	 $('#masonry' + ceid + ' .imageContainer').masonry({
-		itemSelector : '.item',
-		 isAnimated: true
+	$container.isotope({
+		itemSelector : '.item'
 	});
  }
- function pnfGalleryMasonry_initLegend(ceid) {
+ 
+function pnfGalleryMasonry_initLegend(ceid) {
 	//$('#c###CEID###').parent().parent().css('overflow', 'hidden');
 		
 	// Legend
@@ -22,6 +23,7 @@ function pnfGalleryMasonry_init(ceid) {
 		$(this).children('.legend').hide();
 	});
 }
+
 function pnfGalleryMasonry_initLightbox(ceid) {
 	var lightbox = $('#masonry' + ceid).pnfgallerylightbox({
 		'data': '#masonry' + ceid + ' .imageContainer .item',
@@ -29,8 +31,9 @@ function pnfGalleryMasonry_initLightbox(ceid) {
 	});	
 	return lightbox;
 }
-function pnfGalleryMasonry_initScroll(ceid) {
-	$('#masonry' + ceid).infinitescroll({
+
+function pnfGalleryMasonry_initScroll($container, ceid, lightbox) {
+	$container.infinitescroll({
 			navSelector  : '#pnf_gallery' + ceid + ' .nav',    // selector for the paged navigation 
 			nextSelector : '#pnf_gallery' + ceid + ' .nav a',  // selector for the NEXT link (to page 2)
 			itemSelector : '.item',     // selector for all items you'll retrieve
@@ -41,7 +44,10 @@ function pnfGalleryMasonry_initScroll(ceid) {
 			debug        : false
 		},
 		function( newElements ) {
-			 var $newElems = $( newElements );
-			$('#masonry' + ceid + ' .imageContainer').masonry( 'appended', $newElems, true ); 
+			var $newElems = $( newElements );
+			// $container.isotope( 'appended', $newElems, true );  => insert keep filter
+			$container.isotope( 'insert', $newElems, true ); 
+			pnfGalleryMasonry_initLegend(ceid);
+			lightbox[0].reload();
 	});
 }

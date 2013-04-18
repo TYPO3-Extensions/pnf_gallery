@@ -54,7 +54,7 @@ page {
 [userFunc = user_pnfgalleryOnCurrentPage(masonry)]
 page {
 	includeJSFooter {
-		pnf_gallery_damcat_masonry = {$plugin.tx_pnfgallery_pi1.renderGallery.damcat_filter_path}res/pnf_masonry.js
+		pnf_gallery_damcat_isotope = {$plugin.tx_pnfgallery_pi1.renderGallery.damcat_filter_path}res/pnf_isotope.js
 	}
 }
 [global]
