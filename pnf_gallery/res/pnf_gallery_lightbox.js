@@ -13,6 +13,7 @@ PnfGalleryLightbox = function() {
 		imageCurrent : 0,
 		container : 'body',
 		titleTag : 'title',
+		descriptionTag: 'alt',
         init : function() {
             if ( lightbox.initialized ) {
                 return;
@@ -22,6 +23,8 @@ PnfGalleryLightbox = function() {
 				lightbox.container = self._options.container;
 			if (self._options.titleTag)
 				lightbox.titleTag = self._options.titleTag;
+			if (self._options.descriptionTag)
+				lightbox.descriptionTag = self._options.descriptionTag;
 				
 			$(lightbox.container).append('<div class="pnf-gallery-lightbox-overlay"></div>');
 			$(lightbox.container).append('<div class="pnf-gallery-lightbox-box"></div>');
@@ -95,7 +98,9 @@ PnfGalleryLightbox = function() {
 				data = lightbox.images[lightbox.imageCurrent];
 				content = $(data).clone();
 				if (data.attr(lightbox.titleTag))
-					legend = '<p>' + data.attr(lightbox.titleTag) + '</p>';
+					legend += '<p class="title">' + data.attr(lightbox.titleTag) + '</p>';
+				if (data.attr(lightbox.descriptionTag))
+					legend += '<p class="description">' + data.attr(lightbox.descriptionTag) + '</p>';
 				if (data.attr('data-big')) {
 					content = '<img src="' + data.attr('data-big') + '" ' + lightbox.titleTag + '="' + data.attr(lightbox.titleTag) + '" alt="' + data.attr('alt') + '" />';
 				}
