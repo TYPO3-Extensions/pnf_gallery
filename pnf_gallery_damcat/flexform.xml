@@ -34,6 +34,10 @@
 					<numIndex index="0">LLL:EXT:pnf_gallery/locallang_dam.xml:dam_orderby.rand</numIndex>
 					<numIndex index="1">rand</numIndex>
 				</numIndex>
+				<numIndex index="3" type="array">
+					<numIndex index="0">LLL:EXT:pnf_gallery_damcat/locallang.xml:dam_orderby.damcat</numIndex>
+					<numIndex index="1">damcat</numIndex>
+				</numIndex>
 			</items>
 			<minitems>1</minitems>
 			<maxitems>1</maxitems>

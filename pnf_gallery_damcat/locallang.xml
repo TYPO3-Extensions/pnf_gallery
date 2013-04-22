@@ -9,6 +9,7 @@
 			<label index="mode.damcat.records">Choix de catégories (DAM)</label>
 			<label index="damcat_records">Catégories</label>
 			<label index="link_delete_filter">Afficher tout</label>
+			<label index="dam_orderby.damcat">Catégories</label>
 		</languageKey>
 	</data>
 </T3locallang>

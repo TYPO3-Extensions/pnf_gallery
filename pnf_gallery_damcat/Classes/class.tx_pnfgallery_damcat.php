@@ -51,6 +51,7 @@
 			$uidList = implode(',', $uidList);
 			
 			$piObj->damcatRecord = $uidList;
+			$piObj->dam_orderby = $conf['dam_orderby'];
 			$records = $piObj->getRecordsDam('', false, '', $conf['dam_orderby']);
 			
 			// Control multiple categories
@@ -97,6 +98,10 @@
 				INNER JOIN `tx_dam_mm_cat` 
 				ON `tx_dam_mm_cat`.`uid_local` = `tx_dam`.`uid`
 				AND `tx_dam_mm_cat`.`uid_foreign` IN (' . $categories . ')';
+				
+			if ($piObj->dam_orderby == 'damcat') {
+				$queryArray['ORDER'] = '`tx_dam_mm_cat`.`uid_foreign`';
+			}
 		}
 		return $queryArray;
 	}

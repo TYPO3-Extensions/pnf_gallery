@@ -10,6 +10,7 @@ function pnfGalleryMasonry_initIsotope($container) {
 	$container.isotope({
 		itemSelector : '.item'
 	});
+	// Sortby random => not compatibility with lightbox order
  }
  
 function pnfGalleryMasonry_initLegend(ceid) {

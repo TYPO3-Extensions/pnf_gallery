@@ -50,6 +50,13 @@
 		text-align: center;
 	}
 
+#infscr-loading {
+	position: fixed;
+	left: 50%;
+	top: 45%;
+	z-index: 200;
+}
+
 /* Isotope */
 .isotope-item {
     z-index: 2;

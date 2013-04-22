@@ -47,7 +47,7 @@
 				IF(tx_pnfgallerydamorder_order = 0, 999999999, tx_pnfgallerydamorder_order) AS `tx_pnfgallerydamorder_order_tmp`
 			';
 		
-		$queryArray['ORDER'] = '`tx_pnfgallerydamorder_order_tmp`';
+		$queryArray['ORDER'] = '`tx_pnfgallerydamorder_order_tmp`' . ($queryArray['ORDER'] ? ', ' . $queryArray['ORDER'] : '');
 		if ($piObj->conf['dam_orderby']) {
 			switch ($piObj->conf['dam_orderby']) {
 				case 'uid':
