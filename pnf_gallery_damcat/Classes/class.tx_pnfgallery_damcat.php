@@ -257,6 +257,7 @@
 			';
 		$queryArray['FROM'] = '`tx_dam_cat`';
 		$where = array();
+		$where[] = '`tx_dam_cat`.`sys_language_uid` = 0 ';
 		if (!$level)
 			$where[] = '`tx_dam_cat`.`uid` IN (' . $catuids . ')';
 		else
