@@ -63,7 +63,20 @@
 			'lightbox' => $conf['lightbox'] ? 1 : 0,
 			'lightboxwidth' => $conf['lightboxwidth'],
 			'lightboxheight' => $conf['lightboxheight'],
+			'responsive' => $conf['responsive'],
+			'showImagenav' => ($conf['showImagenav']) ? 'true' : 'false',
+			'transition' => $conf['transition'],
+			'transitionSpeed' => $conf['transitionSpeed'],
+			'autoplay' => (empty($conf['autoplay'])) ? 'false' : $conf['autoplay'],
+			'imageCrop' => $conf['imageCrop'],
 		);
+		
+		if(is_numeric($confThemes['imageCrop'])) {
+			$confThemes['imageCrop'] = ($confThemes['imageCrop']) ? 'true' : 'false';
+		}else{
+			$confThemes['imageCrop'] = "'".$confThemes['imageCrop']."'";
+		}
+		
 		foreach ($confThemes as $key => $value) {
 			$markersArray['###' . strtoupper($key) . '###'] = $value;
 		}

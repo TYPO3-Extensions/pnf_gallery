@@ -14,6 +14,18 @@
 			<label index="lightbox">Activer l'ouverture en lightbox</label>
 			<label index="lightboxwidth">Largeur des images dans la lightbox</label>
 			<label index="lightboxheight">Hauteur des images dans la lightbox</label>
+			<label index="responsive">Activer le responsive</label>
+			<label index="showImagenav">Afficher les flèches de navigation</label>
+			<label index="transition">Effet de transition</label>
+			<label index="transitionSpeed">Vitesse de transition</label>
+			<label index="autoplay">Lecture automatique (temps en millisecondes ; désactiver = 0)</label>
+			<label index="imageCrop">Crop de l'image</label>
+			<label index="imageCrop.items.1">Aucun</label>
+			<label index="imageCrop.items.2">Centré et rogné</label>
+			<label index="imageCrop.items.3">Rempli en hauteur</label>
+			<label index="imageCrop.items.4">Rempli en largeur</label>
+			<label index="imageCrop.items.5">Paysage</label>
+			<label index="imageCrop.items.6">Portrait</label>
 		</languageKey>
 	</data>
 </T3locallang>
