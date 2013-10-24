@@ -258,11 +258,15 @@
 		$queryArray['FROM'] = '`tx_dam_cat`';
 		$where = array();
 		$where[] = '`tx_dam_cat`.`sys_language_uid` = 0 ';
-		if (!$level)
+		if (!$level) {
 			$where[] = '`tx_dam_cat`.`uid` IN (' . $catuids . ')';
-		else
+			$queryArray['ORDER'] =  'FIELD(uid,' . $catuids . ')';
+		} else {
 			$where[] = '`tx_dam_cat`.`parent_id` IN (' . $catuids . ')';
+			$queryArray['ORDER'] =  'sorting';
+		}
 		$queryArray['WHERE'] =  implode(' AND ', $where) . ' ' . $this->cObj->enableFields('tx_dam_cat');
+		
 		
 		$rows = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows(
 			$queryArray['SELECT'], 
