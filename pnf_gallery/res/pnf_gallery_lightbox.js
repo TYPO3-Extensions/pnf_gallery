@@ -5,6 +5,26 @@ PnfGalleryLightbox = function() {
     var self = this;
 	// internal options
     this._options = {};
+	this.isMobile = {
+		Android: function() {
+			return navigator.userAgent.match(/Android/i);
+		},
+		BlackBerry: function() {
+			return navigator.userAgent.match(/BlackBerry/i);
+		},
+		iOS: function() {
+			return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+		},
+		Opera: function() {
+			return navigator.userAgent.match(/Opera Mini/i);
+		},
+		Windows: function() {
+			return navigator.userAgent.match(/IEMobile/i);
+		},
+		any: function() {
+			return (self.isMobile.Android() || self.isMobile.BlackBerry() || self.isMobile.iOS() || self.isMobile.Opera() || self.isMobile.Windows());
+		}
+	};
     var lightbox = this._lightbox = {
         width : 400,
         height : 400,
@@ -91,7 +111,10 @@ PnfGalleryLightbox = function() {
 			var legend = '';
 			if (type == 'video') {
 				var id = parseInt(Math.random()*10000, 10);
-				content = '<video autoplay="true" controls="controls" class="pnfgallery_video" id="pnfgallery_video_' + id + '" width="550" height="335"><source src="/' + data + '" type="video/flv"></video>';
+				if( self.isMobile.any() )
+					content = '<video autoplay="false" controls="controls" class="pnfgallery_video" id="pnfgallery_video_' + id + '" width="550" height="335"><source src="/' + data + '" type="video/flv"></video>';
+				else
+					content = '<video autoplay="true" controls="controls" class="pnfgallery_video" id="pnfgallery_video_' + id + '" width="550" height="335"><source src="/' + data + '" type="video/flv"></video>';
 				lightbox.width = 550;
 				lightbox.height = 335;
 			} else {

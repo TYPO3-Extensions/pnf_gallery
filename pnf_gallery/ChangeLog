@@ -1,3 +1,6 @@
+2013-10-31 Frederic GOYER  <frederic.goyer@plan-net.fr>
+	* Check device for autoplay attribute of video tag
+	
 2013-10-24 Emilie SAGNIEZ  <emilie.sagniez@plan-net.fr>
 	* Add default simplegallery css to adapt image with at gallery width
 	
