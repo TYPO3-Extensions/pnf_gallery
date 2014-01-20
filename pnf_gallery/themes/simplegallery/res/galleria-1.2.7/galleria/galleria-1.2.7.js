@@ -1231,7 +1231,7 @@ Galleria = function() {
                     h = Math.max( h, thumb.outerHeight || $( thumb.container).outerHeight( true ) );
                 }
             });
-
+	
             self.$( 'thumbnails' ).css({
                 width: w,
                 height: h
@@ -2817,7 +2817,7 @@ Galleria.prototype = {
             },
 
             onThumbLoad = function( thumb ) {
-
+console.log('w: ' + thumb);
                 // scale when ready
                 thumb.scale({
                     width:    thumb.data.width,
@@ -5577,7 +5577,7 @@ Galleria.Picture.prototype = {
 
             },
             error: function() {
-                Galleria.raise('Could not scale image: '+self.image.src);
+              //  Galleria.raise('Could not scale image: '+self.image.src);
             },
             timeout: 1000
         });

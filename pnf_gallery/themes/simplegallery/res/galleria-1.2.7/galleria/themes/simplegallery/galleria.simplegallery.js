@@ -82,7 +82,7 @@ Galleria.addTheme({
 		}
 				
         // bind some stuff
-        this.bind('thumbnail', function(e) {
+        /*this.bind('thumbnail', function(e) {
 
             if (! touch ) {
                 // fade thumbnails
@@ -105,7 +105,7 @@ Galleria.addTheme({
 				this.$( 'stage' ).css('top', height + 'px');
 			}
         });
-		
+		*/
         this.bind('loadstart', function(e) {
             if (!e.cached) {
                 this.$('loader').show().fadeTo(200, 0.4);

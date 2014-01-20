@@ -25,6 +25,10 @@ PnfGalleryLightbox = function() {
 			return (self.isMobile.Android() || self.isMobile.BlackBerry() || self.isMobile.iOS() || self.isMobile.Opera() || self.isMobile.Windows());
 		}
 	};
+	this.isTablet = function() {
+		var windowWidth = $(window).width();
+		return (windowWidth > 767 && windowWidth < 1023);
+	};
     var lightbox = this._lightbox = {
         width : 400,
         height : 400,
@@ -149,10 +153,17 @@ PnfGalleryLightbox = function() {
 				var destWidth = $(lightbox.container + ' > .pnf-gallery-lightbox-box > .pnf-gallery-lightbox-content > video').attr('width');
 				var destHeight = $(lightbox.container + ' > .pnf-gallery-lightbox-box > .pnf-gallery-lightbox-content > video').attr('height');
 			} else {
-				var destWidth = $(lightbox.container + ' > .pnf-gallery-lightbox-box > .pnf-gallery-lightbox-content > img').width();
-				var destHeight = $(lightbox.container + ' > .pnf-gallery-lightbox-box > .pnf-gallery-lightbox-content > img').height();
-				var lineHeight =  $(lightbox.container + ' > .pnf-gallery-lightbox-box > .pnf-gallery-lightbox-content').height();
-				 $(lightbox.container + ' > .pnf-gallery-lightbox-box > .pnf-gallery-lightbox-content').css('line-height', lineHeight + 'px');
+				if( self.isTablet() || selft.isMobile.any()) {
+					destWidth = $(window).width();
+					destHeight = $(window).height();
+					var lineHeight =  $(lightbox.container + ' > .pnf-gallery-lightbox-box > .pnf-gallery-lightbox-content').height();
+					$(lightbox.container + ' > .pnf-gallery-lightbox-box > .pnf-gallery-lightbox-content').css('text-align', 'center');
+				} else {
+					var destWidth = $(lightbox.container + ' > .pnf-gallery-lightbox-box > .pnf-gallery-lightbox-content > img').width();
+					var destHeight = $(lightbox.container + ' > .pnf-gallery-lightbox-box > .pnf-gallery-lightbox-content > img').height();
+					var lineHeight =  $(lightbox.container + ' > .pnf-gallery-lightbox-box > .pnf-gallery-lightbox-content').height();
+				}
+				$(lightbox.container + ' > .pnf-gallery-lightbox-box > .pnf-gallery-lightbox-content').css('line-height', lineHeight + 'px');
 			}
 			
 			if (destWidth && destHeight) {
